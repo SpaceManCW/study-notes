@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var a = [2,2,1,1,1,3,1]
+    var arr = [2,1,1,1,1,1,1,1,1]
+    //输出2222231
+    function fun(a,arr){
+        var map = new Map()
+        for(let i=0;i<arr.length;i++){
+            if(i+1<=arr[i]){
+                map.set(i+1,arr[i])
+            }
+        }
+        console.log(map);
+        var begin = 0
+        for(let j=0; j<a.length; j++){
+            if(map.has(a[j])){
+                begin = j
+                break
+            }
+        }
+        for(let k=begin;k<a.length;k++){
+            if(map.has(a[k])){
+                a[k] = map.get(a[k])
+            }else{
+                break
+            }
+        }
+        return a.join("")
+    }
+    var res = fun(a,arr)
+    console.log(res);
+</script>

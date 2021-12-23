@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function ceng(root){
+        if(root==null) return ;
+        let res = []
+        let deep = 0
+        search(deep,res,root)
+        return res
+    }
+    function search(deep,res,root){
+        if(!res[deep]){
+            res[deep] = []
+        }
+        res[deep].push(root.val)
+        if(root.left!=null){
+            search(deep+1,res,root.left)
+        }
+        if(root.right!=null){
+            search(deep+1,res,root.right)
+        }
+        return res
+
+    }
+</script>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #list ul{
+            background-color: #ff9999;
+            padding:20px;
+        }
+        #list li{
+            background-color: #ffe5e5;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        #table2 {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #table2 thead{
+            background-color: #4caf50;
+            color: white;
+        }
+        #table2 th,#table2 td{
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        #table2 tbody tr:nth-child(odd){
+            background-color: #f2f2f2;
+        }
+        #table2 tbody tr:hover{
+            background-color: #ff9999;
+        }
+        /*鼠标置于行时行背景颜色改变*/
+        #block span.block{
+            display: block;
+            height: 25px;
+            padding: 10px;
+            border: 1px solid red;
+        }
+        /* 这样写只对内层的span块起作用*/
+        span.label{
+            padding: 15px;
+            border: 2px solid red;
+            height: 25px;
+        }
+        span.label2{
+            display: inline-block;
+            padding: 15px;
+            border: 2px solid red;
+            height: 25px;
+        }
+        /*注意两者区别*/
+        #a-peseudo a:link{
+            color: red;
+        }
+        /*未被访问时*/
+        #a-peseudo a:visited{
+            color: green;
+        }
+        /*访问过的样式 */
+        #a-peseudo a:hover{
+            background-color: hotpink;
+            text-decoration: none;
+        }
+        /*鼠标放置时的样式*/
+        #a-peseudo a:active{
+            color: blue;
+        }
+        /*点击执行时的样式*/
+        #link-button a{
+            color: white;
+            background: #ff9999;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
+        #link-button a:hover{
+            background: red;
+        }
+        #inline-block a{
+            color: white;
+            background: red;
+            border-radius: 5px;
+            padding: 14px 25px;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        #inline-block a:hover{
+            background: #ff9999;
+        }
+        div.main{
+            position: relative;
+            width: 400px;
+            height: 200px;
+            border: 3px solid #73AD21;
+        }
+        button.icon{
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+        }
+        /*相对位置、绝对位置*/
+        #sidebar2{
+            /*容器宽度*/
+            width: 200px;
+            box-sizing: border-box;
+        }
+        #sidebar2 h2{
+            /*取消标题默认的外边距，否则无法与列表完全贴上*/
+            
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+        #sidebar2 h2 a{
+            display: block;
+            background: #3185bf;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        #sidebar2 ul{
+            /*取消默认外边距*/
+            margin: 0;
+            padding: 0;
+            background: #f1f1f1;
+        }
+
+        #sidebar2 li a{
+            display: block;
+            padding: 8px 15px;
+            color: #000;
+            text-decoration: none;
+        }
+        #sidebar2 li a:hover{
+            background: #03a9f4;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="list" >
+    <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Coca Cola</li>
+    </ul>
+</div>
+<table id="table2">
+    <thead>
+    <tr>
+        <th>kmkm</th>
+        <th>cscdsdd</th>
+        <th>sijcks</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>suhcfj</td>
+        <td>ncvjdnv</td>
+        <td>dvsdcvsd</td>
+    </tr>
+    <tr>
+        <td>dsgssdvf</td>
+        <td>sfcascf</td>
+        <td>hhjbhjh</td>
+    </tr>
+    <tr>
+        <td>dfsdfsdf</td>
+        <td>gghjchja</td>
+        <td>xcxcvxcx</td>
+    </tr>
+    </tbody>
+</table>
+<div id="block">
+    A display property with a value of "block" results in
+    <span class="block">a line break between the two elemenys.</span>
+</div>
+<span class="label">标签</span>标签<br>标签<br>
+<span class="label2">标签</span>标签<br>标签
+<!--注意两者区别-->
+<div id="a-peseudo">
+    <a href="http://www.baidu.com">This is a link</a>
+</div>
+<div id="link-button">
+    <p>按钮样式的超链接</p>
+    <a href="http://www.baidu.com">
+        This is a link.
+    </a>
+</div>
+<div id="inline-block">
+    <table>
+        <tr>
+            <th>HTML实验</th>
+            <td><a href="#">编辑</a>
+                <a href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <th>CSS实验</th>
+            <td><a href="#">编辑</a>
+                <a href="#">删除</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="main">
+    <p>在指定容器右下角，模拟一个添加按钮</p>
+    <button class="icon">+</button>
+</div>
+<div id="sidebar2">
+    <h2><a href="#">云技术管理</a></h2>
+    <ul>
+        <li><a href="#">云服务器</a></li>
+        <li><a href="#">云数据库</a></li>
+        <li><a href="#">负载均衡</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

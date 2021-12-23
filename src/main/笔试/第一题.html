@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var str = '123abc456def'
+    var res = []
+    function changeStr(str){
+        var arr = str.split("")
+        for(let i=0; i<arr.length; i++){
+             if(Number(arr[i])>0){
+                 res.push(arr[i]*2)
+             }else{
+                 res.push("["+arr[i]+"]")
+             }
+        }
+        return res.join("")
+    }
+    console.log(changeStr(str));
+</script>

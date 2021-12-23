@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>冒泡排序</h3>
+</body>
+</html>
+<script>
+    function maopao (A){
+        var len = A.length
+        for(let i=0; i < len; i++){
+            for(let j=i+1; j < len; j++){
+                if(A[i] > A[j]){
+                    let temp = A[i]
+                    A[i] = A[j]
+                    A[j] = temp
+                }
+            }
+        }
+        return A
+    }
+    const A = [10, 50, 30, 90, 40, 80, 70]
+    console.log(maopao(A));
+</script>

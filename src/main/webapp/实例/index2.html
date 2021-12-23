@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    First name:<br>
+    <input type="text" value="LIN"><br>
+    <!--value设置初始值-->
+    Last name:<br>
+    <input type="text"><br>
+    <button type="reset">重置</button>
+    <!--reset按键起重置作用，重置后为默认初始值-->
+</form>
+<br>
+<form action="/action_page.phg">
+    FirstName:<input type="text" name="firstname"><br>
+    LastName:<input type="text"name="lastname"><br>
+    <button type="submit">Submit</button>
+</form>
+<!--submit按键提交表单-->
+<br>
+<form>
+    Email:
+    <input type="text" name="email"><br>
+    Country:
+    <input type="text"name="country" value="Norway"readonly>
+    <!--readonly设置只读、可点亮/可复制/不可修改-->
+</form>
+<br>
+<form>
+    用户名：
+    <input type="text" placeholder="请输入用户名"><br>
+    密码：
+    <input type="password" required><br>
+    <input type="checkbox"id="vehicle"disabled>
+    <label for="vehicle">I have a bike</label><br>
+    <input type="checkbox"data-studentnumber="2018214248">
+    <!--data-*实际上上就是data-前缀加上自定义的属性名,命名可以
+    用驼峰命名方式，但取值是必需全部使用小写-->
+</form>
+<!--password设置输入后不可见、placeholder仅值为空时使用
+label标签设置文字可点击，点击效果与for属性属性值所关联的控件
+的ID一样。requierd设置表单提交时值不能为空，不同浏览器有不同样式 -->
+
+</body>
+</html>

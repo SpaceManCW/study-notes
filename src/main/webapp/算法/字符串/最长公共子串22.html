@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function lcs(word1, word2) {
+        var lcsarr = []
+        let max = 0
+        let index = 0
+        for(let i=0; i<word1.length+1; i++){
+            lcsarr.push([])
+        }
+
+        for(let i = 0; i<= word1.length; i++){
+            for(j = 0; j<= word2.length; j++){
+                if(i==0 || j==0){
+                    lcsarr[i][j] = 0
+                }else{
+                    lcsarr[i][j] = word1[i-1] == word2[j-1]? lcsarr[i-1][j-1] +1: 0
+                }
+                if(max < lcsarr[i][j]){
+                  max = lcsarr[i][j]
+                  index = i
+               }
+            }
+            
+        }
+        var str = ''
+        if(max == 0){
+            return ''
+        }
+        else{
+            for(let i = index-max; i<index; i++){
+            str = str+word1[i]
+        }
+        }
+        
+        return str
+        
+    }
+
+    console.log(lcs('base','casehu')); 
+</script>

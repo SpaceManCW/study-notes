@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //使用Map,Map中存着键值对,相比于对象,Map类型中的键可以是任何类型
+    //has方法以键为参数用来判断键是否存在，返回布尔型
+    //set方法用来添加键值对
+    //get方法以键为参数用来获取值
+    //delete方法以键为参数用来删除键值对
+    let numbers = [0,4,3,0]
+    let target = 0
+    function twoSum( numbers ,  target ) {
+    const map = new Map() //创建字典哈希
+    for (let i=0;i<numbers.length;i++){
+       let aim = target - numbers[i] //遍历数组内容，找到当前元素对应的搭配值
+       if (map.has(aim)){  //如果字典里有
+           return[map.get(aim),i+1,] //返回
+       }
+        map.set(numbers[i],i+1) //否则存到哈希里
+    }
+}
+console.log(twoSum( numbers ,  target ))
+</script>

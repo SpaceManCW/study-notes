@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>本程序说明了null,for...of/for...in的区别，以及Symbol类型的基本用法</p> 
+    <p>Js判断数据类型的方法：typeof、instanceof、Object.prototype.toString.call()、constructor</p>
+</body>
+</html>
+<script>
+//null
+    console.log('null===null的结果：',null === null);
+    var arr = [1,2]
+//for...of和for...in的区别
+    console.log('使用for...of')
+    for(const a of arr){
+        console.log(a);
+    }
+    console.log('使用for...in')
+    for(const a in arr){
+        console.log(a);
+    }
+//id是Symbol类型
+    var id = Symbol('foo')
+    var id1 = Symbol.for('id1')
+    var id1 = Symbol.for('id1')
+    console.log('验证symbol.for:',id1 == id1);
+    console.log('Symbol类型:',id)
+    //只有通过Symbol.for创建的symbol才可以使用keyFor
+    console.log('验证keyFor',Symbol.keyFor(id1));
+    console.log('toString的使用:',id.toString());
+    console.log('打印Symbol的描述',id.description);
+    console.log('验证Symbol唯一性:',Symbol('foo')===Symbol('foo'));
+//判断数据类型的方法
+//typeof
+    var num = 123//非对象
+    var num1 = new Number(123)
+    var arr = [1,2,3]
+    console.log('测试typeof:',typeof(num));//number
+    console.log('typeof验证null:',typeof(null));//object
+    console.log('typeof验证数组:',typeof(arr));//object
+//instanceof
+    //不能判断null和undefined
+    console.log('instanceof判断基本数字:',num instanceof Number);//非对象返回false
+    console.log('instanceof判断对象数字:',num1 instanceof Number);//返回true
+    console.log('instanceof判断数组:',arr instanceof Array);
+    console.log(String instanceof String);//false  
+    //第一个String的原型链：
+    //String=>String.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+    //第二个String的原型链：String=>String.prototype
+    console.log(Function instanceof Function);//true 
+    //第一个Function的原型链：
+    //Function=>Function.__proto__ => Object.prototype
+    //第二个Function的原型：
+    //Function=>Function.prototype
+
+//Object.prototype.toString.call()
+    console.log(Object.prototype.toString());//[object Object]
+    console.log(Object.prototype.toString.call(num));//[object Number]
+    console.log(arr.toString());//123
+
+//constructor
+    console.log(num.constructor === Number );//true
+    console.log(arr.constructor === Array );//true
+    //A继承自B,A的实例的constructor指向B,而不是A
+    function A() {}
+    function B() {}
+    A.prototype = new B()
+    a = new A()
+    console.log('测试继承时constructor的变化:',a.constructor === A);
+    console.log('测试继承时constructor的变化:',a.constructor === B);
+</script>

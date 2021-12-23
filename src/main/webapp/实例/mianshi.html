@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #section{
+            width: 0px;
+            height: 0px;
+            margin: 100px auto;
+            border: 50px solid;
+            border-color: #ff9999 #03a9f4 #4caf50 #ce4844;
+        }
+        .div1{
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+        .left{
+            height: 200px;
+            width: 200px;
+            float: left;
+            background-color: #03a9f4;
+            margin-left: -100%;
+            left: -200px;
+            position: relative;
+        }
+        .right{
+            height: 200px;
+            width: 200px;
+            float: left;
+            background-color: #4caf50;
+            margin-left: -200px;
+            right: -200px;
+            position: relative;
+        }
+
+        .main{
+            width: 100%;
+            height: 200px;
+            float: left;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="section"></div>-->
+<div class="div1">
+    <div class="main">This is main.</div>
+    <div class="left">This is left.</div>
+    <div class="right">This is right.</div>
+
+</div>
+</body>
+</html>

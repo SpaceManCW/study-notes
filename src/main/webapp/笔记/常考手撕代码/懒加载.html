@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//资源加载完触发
+window.onload = function(){
+    var imgs = document.querySelectorAll("img")
+    function getTop(e){
+        return e.offsetTop
+    }
+    function lazyLoad(imgs){
+        //可视区域高度
+        var h = window.innerHeight
+        //获取卷上去的距离，兼容
+        var s = document.body.scrollTop||document.documentElement.scrollTop
+        //遍历图片
+        for(var i=0; i<imgs.length; i++){
+            if((h+s)> getTop(imgs[i])){
+                (function(i){
+                    setTimeout(()=>{
+                        var temp = new Image()
+                        temp.src = imgs[i].getAttribute("data-src")
+                        temp.onload = function(){
+                            imgs[i].src = imgs[i].getAttribute("data-src")
+                        }
+                    },2000)
+                })(i)
+            }
+        }
+    }
+    lazyLoad(imgs)
+    window.onscroll= function(){
+        lazyLoad(imgs)
+    }
+}
+</script>

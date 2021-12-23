@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //排序，找到重复元素，计数
+    var arr  = [1,2,2,6,4,5]
+    function fun(arr){
+        arr.sort((a,b) => {return a-b})
+        console.log(arr);
+        var map = new Map()
+        for(let i=0; i<arr.length; i++){
+            if(map.has(arr[i])){
+                map.set(arr[i],map.get(arr[i])+1)
+            }else{
+                map.set(arr[i], 1)
+            }
+        }
+        console.log(map);
+        var res1 = []
+        var res2 = []
+        for(e of map){
+            if(e[1]>1){
+                res1.push(e[0])
+                res2.push(e[1])
+            }
+        }
+        console.log(res1);
+        console.log(res2);
+    }
+    fun(arr)
+</script>

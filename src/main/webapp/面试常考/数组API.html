@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>数组常用API</p>
+</body>
+</html>
+<script>
+    var arr = [1,2,3,4]
+    var arr2 = [5,6,7]
+    var arr3 = [10,9,8]
+    var arr4 = [0,0,2,0,0,2,0,0]
+    //增删
+    console.log('push:',arr.push(5))//5,尾添，返回数组长度
+    console.log('pop:',arr.pop())//5尾删，返回删除元素
+    console.log('unshift:',arr.unshift(0))//5头增，返回数组长度
+    console.log('shift:',arr.shift(5))//1头删，返回删除元素
+    //截取
+    console.log('slice:',arr.slice(0,2))//[1,2]，0--2-1   返回截取的片段不改变原数组
+    console.log('slice222:',arr.slice(2))//输入一个参数就是从n开始截取
+    console.log(arr);
+    // console.log('splice:',arr.splice(0,2,0,0))//[1,2]返回截取片段，改变原数组
+    // console.log(arr)//[0,0,3,4]
+    //特殊操作
+    console.log('concat:',arr.concat(arr2))//[1,2,3,4,5,6,7]
+    console.log('reverse:',arr.reverse())//[4,3,2,1] 改变原数组
+    console.log('sort:',arr3.sort((a,b) => {return a-b}))//[8,9,10]  改变原数组
+    console.log('join:',arr.join('-'))//4-3-2-1将数组元素连成字符串
+    console.log('indexof:',arr4.indexOf(2))//2 
+    console.log('lastIndexof:',arr4.lastIndexOf(2))//5
+</script>

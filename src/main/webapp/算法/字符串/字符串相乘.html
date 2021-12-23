@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var mu = function(num1,num2){
+    let arr1 = num1.split('').reverse()
+    let arr2 = num2.split('').reverse()
+    let arr = []
+    let l1 = num1.length
+    let l2 = num2.length
+    if(l1 == 0 || l2 == 0)  return ''
+    //创建一个两个字符串总长度的数组并初始化
+    for(let i = 0; i< (l1+l2); i++){
+        arr[i] = 0
+    }
+    for(let i = 0; i< l1; i++){
+        for(let j = 0; j< l2; j++){
+            console.log(Number(arr1[i]),Number(arr2[j]),arr[i+j]);
+            let res = Number(arr1[i]) * Number(arr2[j]) + arr[i+j]
+            arr[i+j] = res % 10
+            arr[i+j+1] = parseInt(res/10)+ arr[i+j+1]
+        }
+    }
+    for(let i = (l1+l2-1); i>=0; i--){
+        if(arr[i] !== 0){
+            return arr.slice(0,i+1).reverse().join('')
+        }
+    }
+    return '0'
+}
+var a = '23'
+var b = '12'
+console.log(mu(a,b))
+</script>

@@ -11,3 +11,7 @@ git log
 
 ### 版本回退
 回到上一个版本 git reset --hard HEAD^
+去到指定版本，也可以回复 git reset --hard 版本号
+
+### 记录每一次命令
+窗口关闭但是想回到指定版本可以使用这个命令查看所有命令记录  git reflog

@@ -22,3 +22,13 @@ git revert -n 要重做的版本号   使用这个命令可以只撤销指定版
 
 ### 记录每一次命令
 窗口关闭但是想回到指定版本可以使用这个命令查看所有命令记录  git reflog
+
+### 删除分支
+// 删除本地分支
+git branch -d 分支名
+
+// 删除远程分支
+git push origin --delete 分支名
+
+### 查看分支合并图
+git log --graph

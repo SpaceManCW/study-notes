@@ -30,6 +30,9 @@ git branch -d 分支名
 // 删除远程分支
 git push origin --delete 分支名
 
+//没有合并过的分支无法删除，要删除的话
+git branch -D 分支名
+
 ### 查看分支合并图
 git log --graph
 
@@ -50,3 +53,5 @@ git stash pop    执行这条命令恢复隐藏的信息
 git cherry-pick 需要复制的提交号
 
 ### 测试
+### 拉取远程分支到本地
+git checkout -b dev origin/dev  

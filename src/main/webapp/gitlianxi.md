@@ -47,3 +47,5 @@ git stash pop    执行这条命令恢复隐藏的信息
 
 ### 将master分支的修改复制到自己的分支
 git cherry-pick 需要复制的提交号
+
+### 测试

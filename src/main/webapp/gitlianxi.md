@@ -59,8 +59,3 @@ git checkout -b dev origin/dev
 ## 测试数据
 
 new-branch新提交
-新提交lalala
-
-master提交1
-
-master提交2

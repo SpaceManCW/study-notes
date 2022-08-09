@@ -25,11 +25,23 @@
     {vehicleNumber: 245, vehicleTypeName: '13.7米', volume: 85, weight: 32,use:1},
 ]
 
-localStorage.setItem('commonVehicle',JSON.stringify(commonVehicle))
+//localStorage.setItem('commonVehicle',JSON.stringify(commonVehicle))
 // {vehicleNumber: 244, vehicleTypeName: '13.5米飞翼厢式货车', volume: 80, weight: 30}
 
 
     $('#btn').click(function cacheCommonVehicle(){
+        var commonVehicle;
+        try{
+            commonVehicle = JSON.parse(localStorage.getItem('commonVehicle'))
+        }
+        catch(e){}
+        if([]){
+            console.log('有长度',commonVehicle);
+        }else{
+            console.log('无长度',commonVehicle);
+        }
+
+
     console.log('点击');
     var vehicleTypeName = '13.5米飞翼厢式货车'
     var vehicleNumber = 254

@@ -56,6 +56,23 @@ git cherry-pick 需要复制的提交号
 ### 拉取远程分支到本地
 git checkout -b dev origin/dev  
 
-## 测试数据
+## 上线合并流程
+//更新本地master
+git checkout master 
+git pull 
 
-new-branch新提交
+//将master合并到自己分支
+git checkout 自己的分支名
+git merge master
+
+//切换到上线分支
+git checkout 上线分支
+git pull
+
+//将自己分支合并到上线分支
+git merge 自己分支 --squash
+
+//统一提交
+git add .
+git commit -m 'feat: 需求名称 @linchuanwei1'
+git push

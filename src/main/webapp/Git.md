@@ -1,10 +1,3 @@
-### 合并分支
-master 改动 改动
-
-practice-space改动
-
-回退测试
-
 ### 打印日志
 git log
 简介版本 git log --pretty=oneline
@@ -74,5 +67,5 @@ git merge 自己分支 --squash
 
 //统一提交
 git add .
-git commit -m 'feat: 需求名称 @linchuanwei1'
+git commit -m 'feat: 需求名称'
 git push

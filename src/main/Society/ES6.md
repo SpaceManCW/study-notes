@@ -115,4 +115,50 @@ Vue3使用Proxy实现的响应式，需要响应式的对象会生成一个proxy
   
 数据描述符( value, writable )和存储描述符( get, set )不能同时存在
 
+### Reflect
+Reflect是ES6为了操作对象而提供的API。Reflect对象的设计目的有这样几个：
+1. 将Object对象上一些明显属于语言内部的方法放到Reflect对象上。（比如Object.defineProperty）
+2. 修改某些Object方法的返回结果使其变得更合理，其实就是对原有Object方法的完善
+3. 让Object的一些命令行为变成函数操作 比如 name in Object 改成 Reflect.has(Object, name)
+4. Reflect对象的方法与Proxy对象的方法一一对应，只要是Proxy对象的方法，就能在Reflect对象上找到对应的方法。这就让Proxy对象可以方便地调用对应的Reflect方法，完成默认行为，作为修改行为的基础
+
+例如，如果你想在每次设置对象属性时打印日志，同时保持设置属性的默认行为，你可以这样做：
+```JS
+const obj = new Proxy({}, {
+  set(target, prop, value, receiver) {
+    console.log(`Setting value '${value}' to '${String(prop)}'`);
+    return Reflect.set(target, prop, value, receiver); // 调用Reflect.set来保持默认的设置属性行为
+  }
+});
+```
+这样做有几个好处：
+
+1. `Reflect.set`会有一个布尔类型的返回值，提醒操作是否成功
+2. 更好的语义：`Reflect`Api旨在操作对象的底层方法，这对代码的可读性和意图有好处
+3. 代理兼容性：`Reflect`的方法与`Proxy`的方法一一对应，确保了代理程序中的行为与正常对象行为一致
+4. 扩展性和未来兼容性：`Reflect`Api提供了一种标准化的方式去处理对象操作，可能会有更好的兼容性和扩展性
+
+有了Reflect对象以后，很多操作会更易读：
+```JS
+// 老写法
+Function.prototype.apply.call(Math.floor, undefined, [1.75]) // 1
+
+// 新写法
+Reflect.apply(Math.floor, undefined, [1.75]) // 1
+```
+
+### Promise
+`Promise`是处理异步编程的一种解决方案，可以理解为是一个容器，存着未来才会结束的事件的结果。`Promise`有几个特点：
+
+1. `Promise`代表一个异步操作有三种状态：`pending`（进行中）、`fulfilled`（已成功）和`rejected`（已失败），只有异步操作的结果可以改变状态，也就是一种‘承诺’
+2. 只要状态改变就不会再变，给`Promise`添加回调会得到这个结果
+3. 缺点：一旦开始，无法中途结束，不设置回调，有错误无法感知
+
+**注意点:**
+
+1. `resolve()` 方法将`Promise`的状态变为成功 `reject()` 方法将`Promise`的状态变为失败，这两个参数把异步操作的结果抛出去，`then()`方法中的回调函数会接收到这个结果
+2. `then()`方法其实可以有两个入参，是两个回调函数，第一个是成功的回调，第二个是失败的回调，`catch()`其实是`.then(null, rejection)`或`.then(undefined, rejection)`的别名，用于指定发生错误时的回调函数。
+
+#### Promise.prototype.finally()
+`.catch()` 是当`Promise` 失败时执行的方法，就是与状态有关。而`.finally()`则是无论成功还是失败都会执行的方法，与状态无关，他接收一个回调函数作为参数，但是回调函数不接受任何参数，也无法知道`Promise`的状态是成功还是失败
 

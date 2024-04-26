@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击按钮</button>
+    <h2>防抖操作</h2>
+    <p>防抖就是在多次快速连续点击的情况下，只有最后一次点击触发点击事件</p>
+    <p>基本思路就是使用定时器，每次点击时先清空计时器再对定时器进行赋值</p>
+    <ul>
+        <li>使用doncument.querySelector方法获取点击对象</li>
+        <li>定义一个变量timer作为定时器对象，初始值是null</li>
+        <li>点击对象的.onclick是包裹点击事件的函数，每次点击触发该函数</li>
+    </ul>
+    <hr>
+    <h2>节流操作</h2>
+    <p>节流就是在多次快速连续点击的情况下，每隔一段时间触发一次点击事件</p>
+    <p>基本思路就是定义一个布尔变量，初始值是false,通过定时器来修改布尔值，只有布尔值为true的时候才触发点击事件</p>
+    <ul>
+        <li>关键点就是布尔值flag,通过flag来控制点击事件是否执行</li>
+        <li>为了能触发第一次点击事件，flag的初始值要设置为true</li>
+        <li>判断通过立即将flag修改为false,阻止下一次事件的触发</li>
+        <li>然后使用定时器将flag属性值在一定事件间隔后修改为true</li>
+    </ul>
+    <hr>
+    <h2>扩展：封装防抖，动态设置间隔时间和函数</h2>
+    <p>把防抖操作封装在一个函数中，函数接受两个参数，第一个参数是点击触发的函数，第二个参数是等待时间</p>
+    <ul>
+        <li>利用闭包的特性，return一个函数，在这个函数中可以访问到timer</li>
+        <li>self代表当前函数的this,arg代表参数列表</li>
+        <li>定时器要单独调用fun方法并手动改变this指向，否则this指向window</li>
+    </ul>
+</body>
+</html>
+<script>
+    var btn = document.querySelector("button")
+    function a(name){
+        console.log('打印成功')
+        console.log(name);
+    }
+    btn.onclick = debounce(a, 1000)
+    //btn.onclick = throttle(a, 1000)
+
+    function debounce(fun, wait){
+        var timer = null
+        return function(){
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                console.log(arguments);
+                fun.apply(this, arguments)
+            },wait)
+        }
+    }
+
+    function throttle(fun ,wait){
+        var flag = true
+        return function(){
+            if(flag){
+                flag = false
+                fun.apply(this, arguments)
+                setTimeout(() =>{
+                    flag = true
+                },wait)
+            }
+        }
+    }
+    
+</script>

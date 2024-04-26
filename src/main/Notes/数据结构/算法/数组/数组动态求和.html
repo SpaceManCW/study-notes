@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 描述：输入[1,2,5,6]
+    //      输出[1,3,8,14]
+    let arr = [1,2,5,6]
+    function sum(arr){
+        arr.reduce((pre,cur,index)=>{
+            arr[index] = pre+cur
+            return arr[index]
+        })
+        return arr
+    }
+    console.log(sum(arr))
+</script>

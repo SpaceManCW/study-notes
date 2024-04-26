@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <button id="btn2">点击</button>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+ $('#btn').click(function() {
+    console.log('点击按钮1');
+    sessionStorage.setItem('testDate','测试数据')
+ })
+
+ $('#btn2').click(function() {
+    console.log('点击按钮2');
+    sessionStorage.clear()
+ })
+</script>

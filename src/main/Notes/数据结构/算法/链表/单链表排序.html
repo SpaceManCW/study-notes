@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function sortIn(head){
+        let node = head
+        let arr = []
+        while(node){
+            arr.push(node.val)
+            node = node.next
+        }
+        arr.sort((a,b) =>a-b)
+        node = head
+        for(var item of arr){
+            node.val = item
+            node = node.next
+        }
+        return head
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+  var arr = [2,2,3,3,NaN,NaN,true,true,{},{}]
+
+//   Array.prototype.uniq = function(){
+//       return Array.from(new Set(this))
+//   }
+
+  Array.prototype.uniq = function () {
+    var newArray = []
+    var flag = true
+    for(let i=0;i<this.length;i++){
+        if(newArray.indexOf(this[i])==-1){
+           if(this[i]!=this[i]){
+               if(flag){
+                   newArray.push(this[i])
+                   flag = false
+               }
+           }
+           else{
+               newArray.push(this[i])
+           }
+        }
+    }return newArray
+}
+
+  console.log(arr.uniq())
+</script>

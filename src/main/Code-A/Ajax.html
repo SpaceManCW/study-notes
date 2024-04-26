@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ajax简介</h2>
+    <hr>
+    Ajax就是一种发送网络请求获取数据而不更新页面的技术。关键技术是XMLHttpRequest对象，XHR对象为发送请求和获取相应提供了合理的接口。这个接口可以实现异步从服务器获取额外数据。意味着不用刷新页面也可以获取数据。获取数据以后通过使用DOM方法把数据插入到网页
+
+    <h2>XMLHttpRequest对象</h2>
+    <hr>
+    所有浏览器都支持使用XMLHttpRequest构造函数创建XHR对象
+    <p>let  xhr = new XMLHttpRequest()</p>
+    使用XHR对象首先需要调用open方法，这个方法接受三个参数：请求类型、请求URL、表示请求是否异步的布尔值。open不会实际发送请求只是为发送请求做好准备。紧接着调用send方法，send方法接受一个参数，是作为请求体发送的数据。如果不需要发送请求体，必须传null。调用send()之后，请求会发送到服务器。
+
+    <h2>异步请求和同步请求的区别是什么</h2>
+    <hr>
+    客户端发送同步请求之后需要等待服务端的响应，得到响应之后再执行下一步操作。而异步请求不需要等待服务端的响应。同步请求就是在极少数的既不能进行异步调用又不能重新载入整个页面的情况下使用。异步处理则是为了处理服务器检索时的延迟问题。有一些情况，只需这一步履行完，拿到数据，通过获取到这一步的数据来履行下一步的操作，就需要用到同步的请求。
+    <h2>细节</h2>
+    收到相应之后，XHR对象的以下属性会被填充上数据。responseText: 作为响应体返回的文本。  responseXML: 包含相应数据的XML DOM文档。status: 相应的HTTP状态码。 statusText: 相应的http状态描述。
+    <h2>readyState</h2>
+    <hr>
+    XMLHttpRequest对象有一个 readyState属性，表示当前处在请求/响应过程的哪个阶段。
+    <ul>
+        <li>0: 尚未初始化，没调用open方法</li>
+        <li>1: 已打开，调用了open()，没调用send()</li>
+        <li>2: 已发送，已调用send方法，尚未收到响应</li>
+        <li>3: 接收中，已收到部分响应</li>
+        <li>4: 完成，已收到所有响应可以使用了</li>
+    </ul>
+    每一次readyState从一个值变为另一个值，都会触发readystatechange事件。可以借此机会检查readyState的值
+
+</body>
+</html>
+<script>
+    //先新建一个xhr对象
+    let xhr = new XMLHttpRequest()
+    //定义好onreadystatechange方法
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+            if(xhr.status >=200 && xhr.status < 300 || xhr.status==304){
+                alert(xhr.responseText)
+            }else{
+                alert("Request was unsuccessful: "+ xhr.status)
+            }
+        }
+    }
+    xhr.open("get", "url", true)
+    xhr.send(null)
+</script>

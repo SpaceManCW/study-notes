@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var arr = [1,1,true,true,'true','true',15,15,false,false,undefined,undefined,null,null,NaN,NaN,'NaN','NaN','a','a',{},{}]
+
+    //方法一：利用indexOf去重，返回新数组
+    //不能过滤NaN,Object
+    function distinct1(arr){
+        let newArr = []
+        for(let i=0; i<arr.length; i++){
+            if(newArr.indexOf(arr[i])<0){
+                newArr.push(arr[i])
+            }
+        }
+        return newArr
+    }
+    console.log(distinct1(arr))
+
+    //方法二：利用ES6的Set去重；Array.from(new Set(array))
+    //可以过滤NaN,但是不能过滤Object
+    function distinct2(arr){
+        return Array.from(new Set(arr))
+    }
+    console.log(distinct2(arr))
+
+    //方法三：Object键值对去重
+    function distinct3(arr) {
+        let obj = {}
+        let newArr = []
+        for(let i = 0; i < arr.length; i++) {
+            if(!obj[arr[i]]){
+                obj[arr[i]] = 1
+                newArr.push(arr[i])
+            }
+        }
+        return newArr
+    }
+    res = distinct3(arr)
+    console.log(res)
+</script>

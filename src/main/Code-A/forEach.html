@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+        Array.prototype.forEach = function(callback, thisArg) {
+            var T, k;
+            if(this == null) {
+                throw new TypeError(" this is null or not defined ")
+            }
+            var O = Object(this)
+            var len = O.length >>> 0
+            if({}.toString.call(callback) != "[object Function]") {
+                throw new TypeError(callback + " is not a function")
+            }
+            if(thisArg) {
+                T = thisArg
+            }
+            k = 0
+            while(k <len){
+                var kValue
+                if(k in O) {
+                    kValue = O[k]
+                    callback.call(T, kValue, k, O)
+                }
+                k++
+            }
+        }
+    var arr = ['ss','dd']
+    var arr2 = [5,5,5,5]
+    arr.forEach(e => {
+        console.log(e)
+    })
+</script>

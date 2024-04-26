@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var merge = function(nums1, m, nums2, n){
+    nums1.push(Number.MAX_SAFE_INTEGER)
+    nums2.push(Number.MAX_SAFE_INTEGER)
+    var res = []
+    for(let k=0,i=0,j=0; k< m+n; k++){
+        res[k] = (nums1[i] < nums2[j]) ? nums1[i++]:nums2[j++]
+    }
+    return res
+}
+var nums1 = [1,2,3,0,0,0], m = 3
+var nums2 = [1,2,3], n = 3
+var res = merge(nums1, m, nums2, n)
+console.log(res);
+</script>

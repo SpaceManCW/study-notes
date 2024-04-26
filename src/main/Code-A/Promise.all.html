@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Promise.all简介</h2>
+    <hr/>
+    promise.all接受一个promise对象数组作为参数。数组里的所有promise对象都变成resolve或者有reject状态出现时，它才会去调用.then方法。promise.all生成一个promise对象，这个对象的状态由数组中的promise对象决定。都成功则生成的P也是成功，只要有一个是失败那么生成的也是失败。
+
+    <h2>用到的细节知识点</h2>
+    <hr/>
+    第一个值得注意的点就是，Promise.all()方法的参数其实不是一个数组，而是一个迭代。所以必须要把迭代转换成数组，所以用到了Array.from()。第二点就是res[i] = r而不是res.push(r)，因为我们不能保证resolve的顺序是数组的顺序，所以记住位置比较好。第三点就是使用count来记录成功的Promise的数量，如果和数组的长度一样的话就说明所有项都成功了就可以直接resolve()了。在then方法后面紧接着就跟一个catch()是因为只要有一项是reject就直接reject()
+
+    <h2>Promise.resolve()和Promise.reject()</h2>
+    <hr />
+    这两个方法其实就是新建Promise对象的语法糖，以下两种方式是等效的
+    <ul>
+        <li>Promise.resolve(22)</li>
+        <li>new Promise((resolve, reject) => { resolve(22) })</li>
+    </ul>
+</body>
+</html>
+<script>
+function myPromiseAll(_promise){
+    return new Promise((resolve, reject) =>{
+        const promises = Array.from(_promise)
+        const res = []
+        const len = promises.length
+        let count = 0
+        for(let i=0; i<len; i++){
+            Promise.resolve(promises[i]).then(r => {
+                res[i] = r
+                count++
+                if(count == len){
+                    resolve(res)
+                }
+            }).catch(e => reject(e))
+            
+        }
+    })
+}
+myPromiseAll([1, Promise.resolve(2)]).then(r =>{console.log(r)})
+myPromiseAll([1, Promise.reject(2)]).then(r => {console.log("done")}).catch(e =>{console.log("222")})
+
+</script>

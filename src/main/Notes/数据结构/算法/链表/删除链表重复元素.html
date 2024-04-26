@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>输入：[2,5,6,3,5,2]</li>
+        <li>输出：[2,5,6,3]</li>
+    </ul>
+</body>
+</html>
+<script src="../../数据结构/链表.js"></script>
+<script>
+    var n1 = new ListNode(2)
+    var n2 = new ListNode(2)
+    var n3 = new ListNode(6)
+    var n4 = new ListNode(3)
+    var n5 = new ListNode(5)
+    var n6 = new ListNode(2)
+    n1.next = n2
+    n2.next = n3
+    n3.next = n4
+    n4.next = n5
+    n5.next = n6
+    n6.next = null
+
+    
+    function deleteDuplicates(head){
+        var map = new Map()
+        var node = head
+        while(head){
+            if(!map.has(head.val))
+            map.set(head.val,head)
+            head = head.next
+        }
+        var obj = map.values()
+        var arr = []
+        for (let item of obj) {
+            arr.push(item)
+        }
+        for(let i = 0; i<arr.length; i++){
+            arr[i].next = arr[i+1]
+        }
+        arr[arr.length-1].next = null
+        return arr[0]
+    }
+
+    var res = deleteDuplicates(n1)
+    console.log(res);
+
+    function foo() {
+    console.log(this.a);
+} 
+var a = "Mistake"; 
+var obj = {a : 2, foo: foo}; 
+var bar = obj.foo; 
+bar();
+</script>

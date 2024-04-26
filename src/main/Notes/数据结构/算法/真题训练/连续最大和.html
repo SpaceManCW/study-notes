@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>一个数组有 N 个元素，求连续子数组的最大和。 例如：[-1,2,1]，和最大的连续子数组为[2,1]，其和为 3</p>
+</body>
+</html>
+<script>
+    function sum(n,nums){
+    var value = 0;
+    var max = 0;
+    for(let i=0; i<n; i++){
+        value = value + nums[i]
+        if(value < 0){
+            value = 0
+        }else if(value > max){
+            max = value
+        }
+    }
+    return max
+}
+var n = 3
+var str = "-1 2 1"
+var arr = []
+for(let i = 0; i<n; i++){
+    arr[i] = parseInt(str.split(" ")[i])
+}
+
+console.log(sum(n, arr));
+</script>

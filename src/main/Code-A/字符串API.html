@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Js字符串API</p>
+</body>
+</html>
+<script>
+    var str = 'abcdefg'
+    console.log('slice:',str.slice(0,2))//ab 和数组一样
+    console.log('substr:',str.substr(2,2))//cd start,length截取
+    console.log('substring:',str.substring(2,4))//cd start,end截取
+    console.log('substring:',str.substring(2))//cdefg 输入一个参数就删除
+    console.log('split:',str.split(''))//分割为字符串数组
+    console.log(str);
+</script>

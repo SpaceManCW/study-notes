@@ -11,7 +11,7 @@ const result = Array.from(new Set(arr))
 // [1, 2, 'abc', true, false, undefined, NaN, {}, {}, null]
 ```
 
-**缺点：**无法筛掉空对象
+缺点：无法筛掉空对象
 
 ### 两层循环+splice( )
 
@@ -31,7 +31,7 @@ function removeDuplicate(arr) {
 // [1, 2, 'abc', true, false, undefined, NaN, NaN, {}, {}, null]
 ```
 
-**缺点：**无法筛掉空对象和NaN
+缺点：无法筛掉空对象和NaN
 
 ### indexOf( )
 
@@ -48,7 +48,7 @@ function removeDuplicate(arr) {
 // [1, 2, 'abc', true, false, undefined, NaN, NaN, {}, {}, null]
 ```
 
-**缺点：**无法筛掉空对象和NaN
+缺点：无法筛掉空对象和NaN
 
 ### includes()
 
@@ -65,7 +65,7 @@ function removeDuplicate(arr) {
 // [1, 2, 'abc', true, false, undefined, NaN, {}, {}, null]
 ```
 
-**缺点：**无法筛掉空对象
+缺点：无法筛掉空对象
 
 ### Map
 
@@ -86,8 +86,8 @@ function removeDuplicate(arr) {
 // [1, 2, 'abc', true, false, undefined, NaN, {}, {}, null]
 ```
 
-
 ## 2、new关键字
+
 ```JS
 function myNew(fn, ...args) {
   // 以fn的原型为原型创建一个新对象

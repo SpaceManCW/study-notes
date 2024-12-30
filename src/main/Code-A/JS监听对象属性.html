@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+// let obj = {
+//     _hello:'hello world' //表示私有变量
+// };
+ 
+// Object.defineProperty(obj,'hello',{
+//     //使用点语法时触发
+//     get() {
+//         console.log('get1');//1、4
+//         return this._hello;
+//     },
+//     set:function (value) {
+//         console.log('set1');//3
+//         this._hello = value;
+//     }
+// });
+ 
+// console.log('3',obj.hello);//2
+// obj.hello = 'goodbye';
+// console.log('4',obj.hello); //5
+console.log('*********************************');
+
+let obj = {
+     hello:'hello world'
+ };
+ 
+let proxy = new Proxy(obj, {
+    //第一个参数是目标对象，第二个参数是键
+    get(target, property) {
+        console.log('get');
+        return target[property];
+    },
+    set(target,property,value) {
+        console.log('set');
+        target[property] = value;
+    }
+});
+ 
+console.log(proxy.hello);
+proxy.hello = 'goodbye';
+console.log(proxy.hello);
+
+</script>

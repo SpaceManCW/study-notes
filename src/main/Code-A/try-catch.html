@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <div id="demo">11</div>
+    <p id="p01"></p>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $('#btn').click(function () {
+        console.log('点击');
+        var message, x;
+        message = document.getElementById("p01");
+        console.log(message);
+        message.innerHTML = "";
+        x = document.getElementById("demo").value;
+        console.log(x);
+        try { 
+            if(x == "") throw "值是空的";
+            if(isNaN(x)) throw "值不是一个数字";
+            x = Number(x);
+            if(x > 10) throw "太大";
+            if(x < 5) throw "太小";
+        }
+        catch(err) {
+            message.innerHTML = "错误: " + err + ".";
+        }
+        finally {
+            console.log('完事');
+        }
+    })
+</script>
+</html>

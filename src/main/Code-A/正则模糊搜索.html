@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>前端做模糊搜索</title>
+</head>
+<body>
+	<div id="app">
+		<div class="" style="margin:30px auto;border-radius: 12px;">
+			<el-row type="flex" justify="center">
+			    <el-col :span="6">
+				  	<div class="grid-content bg-purple">
+						<el-input
+						    placeholder="请输入内容"
+						    prefix-icon="el-icon-search"    
+						    v-model="searchText">
+						  </el-input>
+				  	</div>
+			    </el-col>
+			</el-row>
+		</div>
+		<div style="width:800px;min-height:400px;margin:30px auto;text-align: center;background:#f7f7f7;border: 1px solid #eee;border-radius: 12px;padding:10px;">
+			<p style="text-align: left;" v-if="searchText">the result of <span style="color:red" id="searchText" >{{searchText}}</span> is:({{result.length}})</p>
+			<ol style="text-align: left;">
+				<li style="margin-bottom:5px;" v-for="item in result">{{item.b}}({{item.a}})</li>
+			</ol>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script src="../../../../city.js"></script>
+	<script>
+var app = new Vue({
+	el: '#app',
+	data: {
+		searchText: '',
+		timer: null,
+		result:[]
+	},
+	watch: {
+		searchText(val) {
+			if (val) {
+				clearTimeout(this.timer)
+				this.result = []
+				this.timer = setTimeout(() => {
+					let keys = Object.keys(city)
+					Object.keys(city).filter(x => {
+						let bool = generReg(val).test(x)
+						let boolch = generReg(val).test(city[x])
+						if (bool||boolch) {
+							this.result.push({a:x, b:city[x]})
+						}
+						return bool || boolch
+					})
+				}, 200)
+			}
+		}
+	}
+})
+
+function generReg(val) {
+	return new RegExp(`(.*)(${val.split('').join(')(.*)(')})(.*)`, 'i');
+}
+	</script>
+</body>
+</html>

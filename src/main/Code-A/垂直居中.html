@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* width/height/top/bottom都为0，margin为auto */
+        .con{
+            width: 400px;
+            height: 200px;
+            position: relative;
+            border: 1px solid black;
+            background-color:sandybrown;
+        }
+        /* 四个位置都设置为0，不固定子元素大小的话，子元素和父元素一样大。固定子元素大小之后，由于left和top优先级比较高，子元素将显示在左上角。加上margin: auto之后，四边的外边距自适应，实现垂直居中 */
+        .box{
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            margin:  auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: salmon;
+        }
+
+        /* margin负值 */
+        .con2{
+            width: 400px;
+            height: 200px;
+            position: relative;
+            border: 1px solid black;
+            background-color:sandybrown;
+        }
+        .box2{
+            width: 200px;
+            height: 100px;
+            background-color: salmon;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -100px;
+        }
+
+        /* 使用Flex布局 */
+        .con3{
+            width: 400px;
+            height: 200px;
+            position: relative;
+            border: 1px solid black;
+            background-color:sandybrown;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .box3{
+            width: 200px;
+            height: 100px;
+            background-color: salmon;
+            position: absolute;
+        }
+        /* 使用table-cell */
+        .con4{
+            width: 400px;
+            height: 200px;
+            position: relative;
+            border: 1px solid black;
+            background-color:sandybrown;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .box4{
+            width: 200px;
+            height: 100px;
+            background-color: salmon;
+            display: inline-block;
+        }
+        /* 使用grid布局 */
+        .con5{
+            width: 400px;
+            height: 200px;
+            display: grid;
+            border: 1px solid black;
+            background-color:sandybrown;
+        }
+        .box5{
+            width: 200px;
+            height: 100px;
+            align-self: center;
+            justify-self: center;
+            background-color: salmon;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>width/height/top/bottom都为0，margin为auto，父元素relative。子元素绝对定位</li>
+        <li>margin负值,top和left都设置为50%,然后给margin的top和left设置负值</li>
+        <li>利用Flex布局的justify-content和align-items属性</li>
+        <li>父容器设置table-cell,vertical-align: middle,text-align: center;子元素设置display: inline-block</li>
+    </ul>
+    <p>1、如果同时设置top、bottom、left、right，margin设置值中没有auto，那么位置top值优先于bottom值，left值优先于right值</p>
+    <p>2、如果不设置位置，只设置margin:auto;那么布局中相当于margin:0;。</p>
+    <p>其对立定位方向属性同时有具体定位数值的时候，流体特性就发生了。子元素大小适应于父元素的padding box宽度。</p>
+    <div class='con'>
+        <div class = 'box'>box1</div>
+    </div>
+    <div class='con2'>
+        <div class = 'box2'>box2</div>
+    </div>
+    <div class='con3'>
+        <div class = 'box3'>box3</div>
+    </div>
+    <div class='con4'>
+        <div class = 'box4'>box4</div>
+    </div>
+    <div class='con5'>
+        <div class = 'box5'>box5</div>
+    </div>
+</body>
+</html>

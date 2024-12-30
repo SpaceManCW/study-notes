@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="img/loading.gif" data-src="./img/数字和为sum的方法数.png"><br>
+        <img src="img/loading.gif" data-src="./img/进制转换C.png"><br>
+        <img src="img/loading.gif" data-src="./img/连续最大和.png"><br>
+        <img src="img/loading.gif" data-src="./img/阶乘末尾0的个数.png">
+    </div>
+    <p>window.innerHeight和document.body.clientHeight都是获取可视区域的高度。区别在于前者是浏览器对象模型。后者是文档对象模型，并且前者获取的高度包含横向滚动条，后者不包括 </p>
+    <h2>思路</h2>
+    <hr>
+    等所有资源文件加载完之后再绑定事件，所以用window.onload；获取到浏览器顶部的距离，思路是可使高度加卷上去的高度与图片到浏览器顶部的距离对比来判断图片是否出现在可视区域。对获取到的所有img进行遍历，挨个进行判断。使用立即执行函数隔离作用域。使用定时器设置页面开始时的两秒空白。这里关键在于新建一个Image，使用getAttribute使其src等于要加载的图片地址，这一步主要是判断图片是否加载完成。调用temp.onload()就代表图片加载完成了，就可以把真正的地址赋值给src了。最后将window.onscroll方法设置成写好的lazyload
+
+    <h2>注意</h2>
+    <hr>
+    document.body.scrollTop||document.documentElement.scrollTop这里就是左一下兼容，不同浏览器支持的不一样。
+</body>
+</html>
+<script>
+    window.onload = function(){
+        //获取图片列表
+        var imgs = document.querySelectorAll("img")
+        //获取到浏览器顶部的距离
+        function getTop(e){
+            return e.offsetTop
+        } 
+        //懒加载实现
+        function lazyload(imgs){
+            //可视区域高度
+            var h = window.innerHeight;
+            //滚动区域高度
+            var s = document.documentElement.scrollTop || document.body.scrollTop;
+            for(var i=0; i<imgs.length;i++){
+                //图片距离顶部的距离大于可视区域和滚动区域之和时懒加载
+                if((h+s)>getTop(imgs[i])){
+                    //页面开始有两秒空白，定时器设置
+                    (function(i){
+                        setTimeout(function() {
+                            var temp = new Image()
+                            temp.src = imgs[i].getAttribute('data-src')
+                            temp.onload = function(){
+                                imgs[i].src = imgs[i].getAttribute('data-src')
+                            }
+                        }, 2000);
+                    })(i)
+                }
+            }
+        }
+        lazyload(imgs)
+        //滚屏函数
+        window.onscroll = function(){
+            lazyload(imgs)
+        }
+    }
+</script>

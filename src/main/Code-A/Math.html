@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d{
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(red, green, blue);
+            border: 1px solid black;
+            width: 400px;
+            height: 300px;
+        }
+        .d2{
+            width: 100px;
+            height: 100px;
+            margin-right: 50px;
+            border: 1px solid black;
+        }
+        .d3{
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="d">
+        <!-- <div class="d2">d2</div>
+        <div class="d3">d3</div> -->
+        <p>段落文字<em>em强调内容</em><strong>strong强调内容</strong></p>
+    </div>
+    <input type="date">
+    <input type="datetime-local">
+    <input type="number" min="1" max="100">
+    <br>
+    <span style="background-color: blueviolet; padding: 10px;">测试</span>
+    <div>
+        <p style="background-color: blueviolet;">宽度自动撑满</p>
+    </div>
+    
+</body>
+</html>
+<script>
+// function myNew (Con,...arg){
+//     //创建一个新对象以构造函数为原型
+//     let newObj = Object.create(Con.prototype)
+//     let res = Con.apply(newObj,arg)
+//     return res instanceof Object? res : newObj
+// }
+// function Person(name){
+//     this.name = name,
+//     this.id = 77
+// }
+// var per = myNew(Person, "米若")
+// console.log(per);
+
+//instanceof
+function myInstanceof(left, right){
+    let pro  = right.prototype
+    left = left.__proto__
+    while(left !== null){
+        if(left == pro){
+            return true
+        }else{
+            left = left.__proto__
+        }
+    }
+    return false
+}
+let test = new Boolean(null)
+document.write(test)
+var a = 10.72
+//console.log(parseInt("10 33"));
+//var res = parseInt(a)  //10
+//var res = Math.floor(a) //10
+//var res = Math.ceil(a) //11
+//var res = a.split(".")[0] //a.split is not a function
+//console.log(res);
+
+// console.log(parseFloat(13.360000000));//13.36
+// console.log((0.2+0.4).toPrecision(5));//0.60000
+//console.log(parseFloat(0.2+0.4));
+// console.log(parseFloat((0.2+0.4).toFixed(1)));
+// console.log(parseFloat((0.2+0.4).toPrecision(1)));
+// console.log(13.36.toPrecision(3));//13.4
+// console.log(Math.round(0.2+0.4));
+//console.log(alert(3||2))//3
+//console.log(alert(1&&2));//2
+//console.log('' == {});
+var arr = [1,2,3,4,5,6]
+var arr2 = arr.slice(0,1)
+console.log(arr2);
+console.log(Number(null));
+
+</script>

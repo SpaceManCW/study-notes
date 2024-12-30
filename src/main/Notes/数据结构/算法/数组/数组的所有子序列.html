@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+</body>
+</html>
+<script>
+    var sub = function(nums){
+    let res = []
+    let len = nums.length
+    for(let i=0; i<(1 << len); i++){
+        let arr = []
+        for(let j = 0; j<len; j++){
+            if(i & (1<<j))
+                arr.push(nums[j])
+        }
+        res.push(arr)
+    }
+    return res
+}
+var r = [1,2,3]
+console.log(sub(r));
+
+console.log(5<<3)
+console.log(10<<2)
+</script> 

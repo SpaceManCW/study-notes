@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>本程序讲解原型和原型链</p>
+</body>
+</html>
+<script>
+    //实现一个Student类，有study属性
+    //实现一个Person类，有write属性
+    //将Student的prototype指向Person,那么Student的实例student拥有study属性，并继承了Person的write属性
+    function Student(name) {
+        this.name = name
+        this.study = function () {
+            console.log(this.name,"学习");
+        }
+    }
+    function Person() {
+        this.live = function () {
+            console.log(this.name,'生存');
+        }
+    }
+    var person = new Person()
+    Student.prototype = person
+    var student = new Student('小林')
+    student.live()//生存
+    student.study()//学习
+
+    //以下代码探索原型链
+    console.log('实例通过__proto__指向构造函数的原型:',person.__proto__ === Person.prototype)
+    console.log('原型通过constructor指向构造函数',Person.prototype.constructor === Person)
+    console.log('原型的__proto__指向Object.prototype:',Person.prototype.__proto__ === Object.prototype)
+    console.log(Number.__proto__===Function.prototype);
+
+    var object = new Object()
+    console.log(object.__proto__ === Object.prototype);
+    console.log(Object.constructor === Function);//true
+    console.log(Function.constructor === Function);//true
+
+    console.log(Function instanceof Object);//true
+    console.log(Object instanceof Function);//true
+
+    console.log(Function.__proto__ === Object.prototype);
+    console.log(Object.prototype.constructor === Object);//true
+    console.log(Function.prototype.constructor === Function);
+</script>

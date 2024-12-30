@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //众数的出现次数超过数组长度的一半，数组中只能有一个众数
+    //先排序再曲中间的那个值一定是众数
+let nums = [3,2,3]
+function duo (nums) {
+     let index = Math.floor(nums.length/2.0)  //1
+     nums.sort()
+     return nums[index]
+};
+console.log(duo(nums))
+</script>

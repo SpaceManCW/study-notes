@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+        var removeKdigits = function(num, k){
+        if(!k) return num //不删除
+        const len = num.length
+        if(len === k) return '0'//全删除
+        num = num.split('')//拆成数组
+        for(let i=0; i < num.length-1; ++i){
+            //降序
+            if(num[i] > num[i+1]){
+                num.splice(i ,1)//直接删掉
+                if(--k <= 0){
+                    break
+                }
+                //如果i=0的话
+                i -= i? 2: 1
+            }
+        }
+        let resStr = k ? num.slice(0, num.length - k): num
+        return resStr.slice(resStr.findIndex(item => item !== '0')).join('')
+    }
+    let num = '1432219'
+    let k = 3
+    console.log(removeKdigits(num, k));
+</script>

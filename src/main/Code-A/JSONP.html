@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="jsonp" />
+    <textarea  id="text" style="width: 400px; height: 100px;"></textarea>
+    <script>
+        (function (window) {
+            //使用立即执行函数不影响全局变量
+            var jsonp = function (url, callback) {
+                var FuncName = 'handeler' + Math.random().toString().replace('.','');
+                var parameter = '?jsoncallback=' + FuncName;
+                var scriptEle = document.createElement('script')
+                scriptEle.src = url + parameter
+                window[FuncName] = function (data){
+                    //将随机函数名定义到window上
+                    callback(data)
+                    document.body.removeChild(scriptEle)
+                }
+                document.body.appendChild(scriptEle)//添加到页面中，马上调用随机函数
+            }
+            //添加到window对象上
+            window.jsonp = jsonp
+        })(window)
+
+        var btn = document.getElementById("btn")
+        btn.onclick = function() {
+            jsonp("https://www......", function(data) {
+                var result = JSON.stringify(data)
+                document.getElementById("text").val(result)
+            })
+        }
+    </script>
+</body>
+</html>

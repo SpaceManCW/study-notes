@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>trim方法用于删除字符串头尾空白符</p>
+    <ul>
+        <li>不会改变原字符</li>
+        <li>不适用null,undefined,Number</li>
+        <li>原理是利用了repalce方法</li>
+    </ul>
+</body>
+</html>
+<script>
+    var str = '   xiaolin   k '
+    console.log(str.trim())
+
+    function myTrim(s) {
+      return s.replace(/(^\s+)|(\s+$)/g,"");
+    } 
+
+    console.log(myTrim(str));
+</script>

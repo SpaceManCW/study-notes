@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>实现二叉树的查找算法</h3>
+    <ul>
+        <li>找最小值 83</li>
+        <li>找最大值 91</li>
+        <li>找最大值 99</li>
+        <li>删除节点 115</li>
+    </ul>
+</body>
+</html>
+<script>
+    //首先要定义的第一个对象就是节点Node
+        function Node(val, left, right) {
+            this.val = val
+            this.left = left
+            this.right = right
+            this.show = show
+        }
+    
+        function show() {
+            return this.val
+        }
+    //接下来创建一个BST类，也就是二叉查找树
+        function BST() {
+            this.root = null
+            this.insert = insert
+            this.inOrder = inOrder
+            this.getMin = getMin
+            this.getMax = getMax
+            this.find = find
+            this.remove = remove
+        }
+    //二叉树的插入算法
+        function insert(val) {
+            //先创建一个新的Node节点，并给val属性赋值
+            var n = new Node(val,null,null)
+            //如果被插入的是空树
+            if(this.root == null){
+                this.root = n
+            }
+            else{
+                var current = this.root
+                var parent
+                while(true){
+                    //先把根的引用给存起来，因为current会变
+                    parent = current
+                    //插入节点小于根节点且根节点的左节点为空则直接插入到左节点
+                    if(val < current.val){
+                        current = current.left
+                        if(current == null){
+                            parent.left = n
+                            break
+                        }
+                    }
+                    else{
+                        current = current.right
+                        if(current == null){
+                            parent.right = n
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    
+    //接下来赋予二叉树遍历的能力，中序，先序，后序
+    //依靠递归实现遍历
+        function inOrder(node) {
+            if(node!==null){
+                inOrder(node.left)
+                console.log(node.show())
+                inOrder(node.right)
+            }
+        }
+
+    //在二叉树上进行查找最小值
+        function getMin() {
+            var current = this.root
+            while(current.left!==null){
+                current = current.left
+            }
+            return current.val
+        }
+    //在二叉树上进行查找最大值
+        function getMax() {
+            var current = this.root
+            while(current.right!==null){
+                current = current.right
+            }
+            return current.val
+        }
+    //在二叉树中寻找定值
+        function find(val) {
+            var current = this.root
+            while(current !== null){
+                if(current.val == val){
+                    return true
+                }else if(current.val > val){
+                    current = current.left
+                }else{
+                    current = current.right
+                }
+            }
+            return false
+        }
+    //在二叉树中删除节点
+        function remove(val) {
+            return removeNode(this.root,val)
+        }
+
+        function removeNode(root, val) {
+            if(root ==null) return null
+            //查找到了
+            if(root.val == val){
+                //没有子节点的情况
+                if(root.left == null && root.right == null){
+                    return null
+                }
+                //没有左节点的情况
+                if(root.left == null){
+                    return root.right
+                }
+                //没有右节点的情况
+                if(root.right == null){
+                    return root.left
+                }
+                //是两个子节点的情况
+                //待删除节点有两个子节点，就找到右子树中的最小值来替换待删除节点
+                //然后再次调用删除方法删除右子树中的那个最小值
+                var tempNode = getMin(root.right)
+                root.val = tempNode.val
+                root.right = removeNode(root.right, tempNode.val);
+                return root
+            }else if(val < root.val){
+                root.left = removeNode(root.left, val)
+                return root
+            }else{
+                root.right = removeNode(root.right, val)
+                return root
+            }
+        }
+    //测试一下
+        var nums = new BST()
+        nums.insert(3)
+        nums.insert(9)
+        nums.insert(20)
+        nums.insert(15)
+        nums.insert(7)
+        inOrder(nums.root)
+        console.log('最小值是：',nums.getMin())
+        console.log('最大值是：',nums.getMax())
+        console.log('差找3',nums.find(3));
+        console.log('删除节点：',nums.remove(3));
+    </script>

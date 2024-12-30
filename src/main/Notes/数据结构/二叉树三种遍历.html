@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function three(root){
+        const perO = []
+        const inO = []
+        const postO = []
+        function perOrder(root){
+            if(root){
+                perO.push(root.val)
+                perOrder(root.left)
+                perOrder(root.right)
+            }
+        }
+        function inOrder(root){
+            if(root){
+                inOrder(root.left)
+                inO.push(root.val)
+                inOrder(root.right)
+            }
+        }
+        function postOrder(root){
+            if(root){
+                postOrder(root.left)
+                postOrder(root.right)
+                postO.push(root.val)
+            }
+        }
+        perOrder(root)
+        inOrder(root)
+        postOrder(root)
+
+        return [perO,inO,postO]
+    }
+</script>

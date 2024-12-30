@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>实现一个new关键字</p>
+</body>
+</html>
+<script>
+    //new
+    //1、创建一个空对象
+    //2、将空对象的原型指向构造函数的原型 
+    //3、将这个空对象改变this的指向去调用构造函数
+    function Person(name, age){
+        this.name = name
+        this.age = age
+    }
+    let p1 = new Person('小林', 22)
+    console.log(p1);
+    //这里如果不加new那么调用Person时 this 是指向window对象的
+    function New(fn,...args){
+        let obj = Object.create(fn.prototype)
+        //将构造函数的this指向这个新对象
+        let res = fn.apply(obj,args)
+        //构造函数有返回值就返回res,没返回值返回obj
+        return res instanceof Object ? res : obj;
+    }
+
+    let p2 = New(Person,'李四',22)
+    console.log(p2);
+</script>   

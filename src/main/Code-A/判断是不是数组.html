@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>判断一个变量是不是数组的方法</h3>
+    <p>方法一：使用Array.isArray()进行判断，返回布尔值</p>
+    <p>方法二：使用instanceof判断</p>
+    <p>方法三：使用constructor判断，但是constructor可以被重写</p>
+    <p>方法四：使用Object.prototype.toString.call()</p>
+</body>
+</html>
+<script>
+    var a = [1,2,3,4]
+    var b = 333
+    var c = {a: 22, b: 33}
+
+    // 方法一：Array.isArray()    
+    console.log(Array.isArray(a));
+    console.log(Array.isArray(b));  
+    console.log(Array.isArray(c));
+    console.log("*************************");
+    //方法二：使用instannceof判断 
+    console.log(a instanceof Array);
+    console.log("*************************");
+    //方法三：使用constructor判断
+    console.log(a.constructor === Array);
+    console.log(b.constructor === Number);
+    console.log(c.constructor === Object);
+    console.log("*************************");
+    //方法四：使用Object.prototype.toString.call()判断
+    console.log(Object.prototype.toString.call(a));
+    console.log(Object.prototype.toString.call(b));
+    console.log(Object.prototype.toString.call(c));
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 第一种：左右固定大小并分别左右浮动，中间设置margin-left/right给左右腾出宽度，注意div排列是左右中 */
+        .l1{
+            width: 200px;
+            height: 100px;
+            float: left;
+            background: salmon;
+        }
+        .c1{
+            height: 100px;
+            margin-left: 200px;
+            margin-right: 200px;
+            overflow: hidden;
+            background-color: sandybrown;
+        }
+        .r1{
+            width: 200px;
+            height: 100px;
+            float: right; 
+            background: salmon;
+        }
+        /* 第二种：使用定位，父元素相对定位，左右绝对定位并固定宽度，中间设置左右margin**********缺点是绝对定位会脱离文档流*/
+        .wrap2{
+            margin-top: 20px;
+            position: relative;
+        }
+        .l2{
+            width: 200px;
+            height: 100px;
+            background: salmon;
+            position: absolute;
+            left: 0;
+        }
+        .r2{
+            width: 200px;
+            height: 100px;
+            background: salmon;
+            position: absolute;
+            right: 0;
+        }
+        .c2{
+            margin: 0 200px;
+            height: 100px;
+            background-color: sandybrown;
+        }
+        /* 第三种：flex布局 */
+        .wrap3{
+            margin-top: 20px;
+            display: flex;
+        }
+        .l3{
+            width: 200px;
+            height: 100px;
+            background: salmon;
+        }
+        .c3{
+            height: 100px;
+            flex: 1;
+            background-color: sandybrown;
+            
+        }
+        .r3{
+            width: 200px;
+            height: 100px;
+            background: salmon;
+        }
+        /* 第三种：table布局，父元素设置display: table;左右固定宽度，中间自适应，宽度由内容决定 */
+        .wrap4{
+            margin-top: 20px;
+            display: table;
+        }
+        .wrap4>div{
+            display: table-cell;
+        }
+        .l4 ,.r4{
+            width: 200px;
+            height: 100px;
+            background: salmon;
+        }
+        .c4{
+            height: 100px;
+            background-color: sandybrown;
+        }
+        /* 第四种：grid网格布局 */
+        .wrap5{
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 200px auto 200px;
+            grid-template-rows: 100px;
+        }
+        .l5 ,.r5{
+            background: salmon;
+        }
+        .c5{
+            background-color: sandybrown;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap1">
+        <div class="l1">left</div>
+        <div class="r1">right</div>
+        <div class="c1">左右固定大小并分别左右浮动，中间设置margin-left/right给左右腾出宽度，注意div排列是左右中</div>
+    </div>
+    <div class="wrap2">
+        <div class="l2">left</div>
+        <div class="r2">right</div>
+        <div class="c2">父元素相对定位，左右绝对定位并固定宽度，中间设置左右margin</div>
+    </div>
+    <div class="wrap3">
+        <div class="l3">left</div>
+        <div class="c3">flex布局，左右固定宽度，中间flex: 1自适应</div>
+        <div class="r3">right</div>
+    </div>
+    <div class="wrap4">
+        <div class="l4">left</div>
+        <div class="c4">table布局，左右固定宽度，中间自适应，宽度由内容决定</div>
+        <div class="r4">right</div>
+    </div>
+    <div class="wrap5">
+        <div class="l5">left</div>
+        <div class="c5">grid网格布局</div>
+        <div class="r5">right</div>
+    </div>
+</body>
+</html>

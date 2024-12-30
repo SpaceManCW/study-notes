@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    每秒输出一个“Hello World”，三次后停止，用闭包实现
+</body>
+</html>
+<script>
+    function test(){
+        var count = 0
+        var timer = null
+        return function(){
+            timer = setInterval(() => {
+                if(count == 3){
+                    clearInterval(timer)
+                }else{ 
+                    count++
+                    console.log("Hello World");
+                }
+            }, 1000);
+        }
+    }
+    var a = test()
+    a()
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>浅拷贝、深拷贝</p>
+</body>
+</html>
+<script>
+    var num = 123
+    var arr = [1,2,3]
+    var student = {
+        name: '小林',
+        work: '前端',
+        study: () =>{
+            console.log('学习')
+        },
+        like:{
+            foot: '烧烤'
+        }
+    }
+     var student3 = JSON.parse(JSON.stringify(student))
+    // var student3 ={}
+    // Object.assign(student3,student)
+    
+    student3.name = '小吕'
+    student3.like.foot = '火锅'
+    console.log('student:',student)
+    console.log('student3:',student3)
+
+    var num2 = num
+    num2 = 456
+    console.log('num:',num);//123
+    console.log('num2:',num2);//456
+
+    var arr2 = arr
+    arr2[0] = 2
+    console.log('arr:',arr);//[2, 2, 3]
+    console.log('arr2:',arr2);//[2, 2, 3]
+
+    var student2 = student
+    student2.work = '后端'
+    console.log('student:',student);//{name: '小林', work: '后端'}
+    console.log('student2:',student2);//{name: '小林', work: '后端'}
+    console.log(false == '0');
+</script>

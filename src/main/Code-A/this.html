@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>this</p>
+    <ul>
+        <li>直接调用foo，this一定是window</li>
+        <li>obj调用foo() this指向obj</li>
+        <li>箭头函数没有this,它的this取决于包裹箭头函数的第一个普通函数</li>
+        <li>bind,不管给函数bind几次，this永远由第一次bind决定</li>
+    </ul>
+    <p>优先级：new优先级最高，接下来是bind这些函数，然后是由对象调用的方式,最后是直接调用的方式，箭头函数的this一旦被绑定就不会再被任何方式改变</p>
+</body>
+</html>
+<script>
+    // //直接调用foo，this一定是window
+    // function foo(){
+    //     console.log(this.a);
+    // }
+    // var a = 1
+    // foo()
+
+    // //obj调用foo() this指向obj
+    // const obj = {
+    //     a: 2,
+    //     foo: foo
+    // }
+    // obj.foo()
+
+    // //使用new则this指向c
+    // const c = new foo()
+
+    // //箭头函数没有this,它的this取决于包裹箭头函数的第一个普通函数
+    // function aa() {
+    //     () => {
+    //         return () => {
+    //             console.log(this.a);
+    //         }
+    //     }
+    // }
+    // console.log(aa());
+    
+    // //bind,不管给函数bind几次，this永远由第一次bind决定
+    // let fn2 = function fn1() {
+    //     console.log(this.a);
+    //     return function(){
+    //         return fn.bind()
+    //     }.bind(a)
+    // }
+    // fn2()
+
+    //面试题
+    var a = function () {
+        this.b = 3//this指向window, b = 3
+    }
+    var c = new a()//this指向c,c.b =3
+    a.prototype.b = 9//不影响
+    var b = 7 //全局b改为7
+    a()//全局b又改为3
+
+    console.log(b)
+    console.log(c.b);
+</script>

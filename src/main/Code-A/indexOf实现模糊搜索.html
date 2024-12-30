@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>模糊查询</title>
+    </head>
+    <style>
+        .wrap {
+            text-align: center;
+            max-width: 400px;
+        }
+    
+        #newsBox {
+            display: inline-block;
+            text-align: left;
+        }
+        input{
+            width: 100%;
+        }
+    </style>
+    <body>
+    <div class="wrap">
+        <input type="text" id="demo">
+        <ul id="newsBox">
+        </ul>
+    </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        var data = ["百年南开：牢记嘱托立德树人","书写命运与共的世界故事100天后,世园会等你来","打造一支高素质政法队伍2019北京两会","跋山涉水接力跑——全面深化改革的“广东探索”",
+        "归途，开启家的记忆—写在2019年春运之际","春运大幕今开启 多部门联动将严打车闹座霸","人社部：已为38.9万农民工追发工资待遇57亿元","个人所得税APP更新,房屋出租人信息不用填了"]
+        var input = document.getElementById("demo");
+        var ul = document.getElementById("newsBox");
+        $('#demo').on('input',function () {
+	          console.info("开始校验");
+            creat()
+         });
+        function creat() {
+          var value = input.value;
+          var html = "";
+          var newData = data.filter(item => {
+            if(item.indexOf(value) > -1){//indexOf方法中如果xxx.indexOf("")返回值为0
+              return item
+            }
+            return newData
+          })
+          if(newData.length > 0){
+            for(var i=0;i<newData.length;i++){
+              html += `<li>${newData[i]}</li>`
+            }
+          }else{
+            html += `<li>暂无数据</li>`
+          }
+          ul.innerHTML = html;
+        }
+        creat()
+        input.onchange = function (e) {
+          creat()
+        }
+    </script>
+</html>

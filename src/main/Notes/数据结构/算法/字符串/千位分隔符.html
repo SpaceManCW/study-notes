@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>输入输出均为字符串格式</li>
+        <li>输入10000000000</li>
+        <li>输出10,000,000,000</li>
+    </ul>
+</body>
+</html>
+<script>
+    var num = '10000000000'
+    var thousandSeparator = function(n) {
+    n=n.split('')
+    for(let i=n.length-3;i>0;i=i-3){
+        n.splice(i,0,',')
+    }
+    return n.join('');
+};
+    console.log(thousandSeparator(num));
+</script>

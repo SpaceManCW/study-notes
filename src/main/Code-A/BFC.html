@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .container {
+    width: 1000px;
+    height: 1000px;
+    border: 1px solid black; 
+    position: relative;
+  }
+  .son1 {
+    width: 200px;
+    /* height: 200px; */
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .small1 {
+    width: 300px;
+    height: 300px;
+    border: 1px solid blue;
+    margin-bottom: 20px;
+  }
+  .small2 {
+    width: 300px;
+    height: 300px;
+    border: 1px solid blue;
+    margin-top: 20px;
+  }
+  .son3 {
+    height: 200px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background: green;
+    overflow: hidden;
+  }
+  .son2 {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    /* margin-top: 20px; */
+    /* margin-left: 20px; */
+  }
+</style>
+<script>
+  /*
+   BFC(块级格式化上下文)
+   1. 具有BFC特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且BFC具有普通容器所没有的一些特性。
+   2. 如何创建BFC
+   2.1 根元素
+   2.2 float的值不为none
+   2.3 overflow的值不为visible
+   2.4 display的值为inline-block、table-cell、table-caption、flex、inline-flex
+   2.5 position的值为absolute或fixed
+   3. BFC的特性
+   3.1 内部的Box会在垂直方向，一个接一个地放置。
+   3.2 Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+   3.3 每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+   3.4 BFC的区域不会与float box重叠。
+   3.5 BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+   3.6 计算BFC的高度时，浮动元素也参与计算
+   4. 应用
+   4.1 自适应两栏布局
+   4.2 清除内部浮动
+   4.3 防止垂直margin重叠
+   4.4 阻止元素被浮动元素覆盖
+   4.5 创建自适应两栏布局
+   4.6 创建自适应三栏布局
+   4.7 创建一个三栏布局，左右两栏宽度固定，中间自适应
+  */
+</script>
+<body>
+<div class="container">
+  <div class="son1">
+    <div class="small1"></div>
+    <div class="small2"></div>
+  </div>
+  <!-- <div class="son3"></div> -->
+</div>
+</body>
+</html>
